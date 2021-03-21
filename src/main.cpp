@@ -35,7 +35,6 @@ int tx;
 int ty;
 char buf[100];
 int cursor = 5;
-int charNum = 1;
 
 ///////////////////////////////////////////////////////////////////////////
 // KEYBOARD
@@ -176,11 +175,11 @@ void loop() {
       tx = 2;
       ty = 2;
     } else if (keys == 'D') {
-      charNum = charNum + 1;
-      cursor = cursor + 7;
+      cursor = cursor + 6;
       strcat(buf, &lastChar);
       lastChar = ' ';
       Serial.println(buf);
+    } else {
       write = false;
     }
     if (write) {
@@ -212,7 +211,9 @@ void keyPressed() {
   tft.setTextColor(TFT_WHITE);
   tft.drawString(String(buttons[ty][tx]), posX[tx] + 4, posY[ty] + 2, 2);
   tft.drawString(letters[ty][tx], posX[tx] + 4, posY[ty] + 20, 1);
-  tft.fillRect(cursor, 0, 128, 24, TFT_WHITE);
-  tft.setTextColor(TFT_BLACK);
-  tft.drawString(&lastChar, cursor, 5, 2);
+  tft.fillRect(0, 0, 128, 24, TFT_WHITE);
+  tft.setTextColor(TFT_BLACK, TFT_WHITE);
+  int sumX = tft.drawString(buf, 5, 5, 2);
+  tft.setTextColor(TFT_YELLOW, TFT_BLUE);
+  tft.drawString(&lastChar, sumX + 5, 5, 2);
 }
