@@ -1,6 +1,5 @@
 #include <Arduino.h>
 #include <Keypad.h>
-#include <SPI.h>
 #include <TFT_eSPI.h>  // Hardware-specific library
 
 TFT_eSPI tft = TFT_eSPI();
@@ -34,7 +33,6 @@ char lastChar;
 int tx;
 int ty;
 char buf[100];
-int cursor = 5;
 
 ///////////////////////////////////////////////////////////////////////////
 // KEYBOARD
@@ -174,15 +172,20 @@ void loop() {
       }
       tx = 2;
       ty = 2;
+    } else if (keys == '0') {
+      lastChar = '0';
+      tx = 0;
+      ty = 0;
     } else if (keys == 'D') {
-      cursor = cursor + 6;
       strcat(buf, &lastChar);
       lastChar = ' ';
-      Serial.println(buf);
+    } else if (keys == 'C') {
+      buf[strlen(buf) - 1] = '\0';
     } else {
       write = false;
     }
     if (write) {
+      Serial.println(buf);
       keyPressed();
     }
   }
