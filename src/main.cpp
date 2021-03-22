@@ -28,9 +28,12 @@ void setup() {
   Serial.begin(115200);
   tft.init();
   tft.setRotation(0);
-  t9Draw(&tft);
+  String result = t9(&tft, &keypad);  
+  tft.fillScreen(TFT_WHITE);
+  tft.setTextColor(TFT_BLACK, TFT_WHITE);
+  tft.drawString(result, 5, 5, 2);
 }
 
 void loop() {
-  t9(&tft, &keypad);  
+  
 }

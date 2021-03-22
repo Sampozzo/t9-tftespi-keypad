@@ -6,5 +6,5 @@
 
 void t9Draw(TFT_eSPI* tft);
 void keyPressed(TFT_eSPI* tft);
-void t9(TFT_eSPI* tft, Keypad* keypad);
+String t9(TFT_eSPI* tft, Keypad* keypad);
 #endif
