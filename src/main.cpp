@@ -25,10 +25,13 @@ Keypad keypad =
 ///////////////////////////////////////////////////////
 
 void setup() {
-  Serial.begin(115200);
-  tft.init();
-  tft.setRotation(0);
-  String result = t9(&tft, &keypad);  
+  tft.init(); // inizialize tft screen
+  tft.setRotation(0); // set the screen rotation
+
+  String result = t9(&tft, &keypad); // start the t9 loop and get the string from the user input
+ 
+
+  // print the result on the screen 
   tft.fillScreen(TFT_WHITE);
   tft.setTextColor(TFT_BLACK, TFT_WHITE);
   tft.drawString(result, 5, 5, 2);
