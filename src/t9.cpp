@@ -63,6 +63,7 @@ void keyPressed(TFT_eSPI* tft) {
 }
 
 String t9(TFT_eSPI* tft, Keypad* keypad) {
+  memset(buf, 0, sizeof buf);
   t9Draw(tft);
   boolean loop = true;
   while (loop) {
@@ -194,5 +195,5 @@ String t9(TFT_eSPI* tft, Keypad* keypad) {
       }
     }
   }
-  return (String) buf;
+  return (String)buf;
 }
