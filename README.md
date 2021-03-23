@@ -17,7 +17,7 @@ to write on the T9 keyboard, use 1-0 keys. Use "D" key to move cursor forward, "
 
 Example is on main.cpp.
 
-#### NB: you can find an alternative version using PCF8574 and [I2CKeyPad library](https://github.com/RobTillaart/I2CKeyPad) on the PCF8574 branch.
+## NB: you can find an alternative version using PCF8574 and [I2CKeyPad library](https://github.com/RobTillaart/I2CKeyPad) on the [PCF8574 branch](https://github.com/Sampozzo/t9-tftespi-keypad/tree/PCF8574).
 
 
 
