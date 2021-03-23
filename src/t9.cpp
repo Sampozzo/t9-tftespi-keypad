@@ -28,6 +28,7 @@ char lastChar;
 int tx;
 int ty;
 char buf[100];
+uint8_t lastKey;
 
 void t9Draw(TFT_eSPI* tft) {
   tft->fillScreen(TFT_WHITE);
@@ -62,14 +63,15 @@ void keyPressed(TFT_eSPI* tft) {
   tft->drawString(&lastChar, sumX + 5, 5, 2);
 }
 
-String t9(TFT_eSPI* tft, Keypad* keypad) {
+String t9(TFT_eSPI* tft, I2CKeyPad* keypad) {
   memset(buf, 0, sizeof buf);
   t9Draw(tft);
   boolean loop = true;
   while (loop) {
-    char keys = keypad->getKey();
-
-    if (keys) {
+    uint8_t key = keypad->getKey();
+    if (key != lastKey && keypad->isPressed() && key < 16) {
+      char keys = (char)"123A456B789C*0#DNF"[key];
+      Serial.println(key);
       boolean write = true;
       if (keys == '1') {
         lastChar = '1';
@@ -194,6 +196,7 @@ String t9(TFT_eSPI* tft, Keypad* keypad) {
         keyPressed(tft);
       }
     }
+    lastKey = key;
   }
   return (String)buf;
 }
