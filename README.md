@@ -1,6 +1,8 @@
 # T9 TFT_eSPI Keypad
 ### A T9 (predictive text) implementation for esp32 with a tft screen and a 4x4 keypad.
 
+## NB: This branch is an alternative version using PCF8574 and [I2CKeyPad library](https://github.com/RobTillaart/I2CKeyPad).
+
 This is a simple funcion that get input from a keypad (like we used to do on old phones before the smartphone's era).
 
 It depends on:
