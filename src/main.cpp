@@ -12,7 +12,7 @@ I2CKeyPad keypad;
 
 void setup() {
   Serial.begin(115200);
-  Wire.begin();
+  Wire.begin(17, 16);
   Wire.setClock(400000);
   if (keypad.begin(KEYPAD_ADDRESS) == false) {
     Serial.println("\nERROR: cannot communicate to keypad.\nPlease reboot.\n");
